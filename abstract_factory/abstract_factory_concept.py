@@ -5,12 +5,12 @@ from factory_a import FactoryA
 from factory_b import FactoryB
 
 
-class IAbstractFactory(metaclass=ABCMeta):
+class IAbstractFactory(metaclass=ABCMeta): #lớp trừu tượng định nghĩa giao diện cho Abstract Factory, dùng ABCMeta và abstractmethod để ép các class con phải triển khai method create_object
     "Abstract Factory Interface"
 
-    @staticmethod
+    @staticmethod #method nhận vào 1 chuỗi như 'ab', 'bc','ca'
     @abstractmethod
-    def create_object(factory):
+    def create_object(factory): #method quyết định dùng factoryA hay factoryB
         "The static Abstract factory interface method"
 
 
@@ -31,7 +31,7 @@ class AbstractFactory(IAbstractFactory):
         return None
 
 
-# The Client
+# The Client. client không biết class nào được tạo, chỉ cần 1 điểm giao tiếp là AbstractFactory và các factory con (fac A, fac B # # tạo product phù hợp
 PRODUCT = AbstractFactory.create_object('ab')
 print(f"{PRODUCT.__class__}")
 
